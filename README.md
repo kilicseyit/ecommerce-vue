@@ -1,42 +1,92 @@
-<<<<<<< HEAD
-# ecommerce-ui
+# 🛒 E-Ticaret Yönetim Paneli
 
-This template should help get you started developing with Vue 3 in Vite.
+Modern ve kullanıcı dostu bir e-ticaret yönetim paneli. Vue.js frontend ve .NET Core Web API backend ile geliştirilmiştir.
 
-## Recommended IDE Setup
+## 🚀 Özellikler
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+### 👤 Kimlik Doğrulama & Yetkilendirme
+- JWT tabanlı kimlik doğrulama
+- Rol bazlı yetkilendirme (Admin / User)
+- Kullanıcı profil yönetimi
 
-## Recommended Browser Setup
+### 📦 Ürün Yönetimi
+- Ürün ekleme, düzenleme, silme
+- Kategori bazlı ürün yönetimi
+- Stok takibi ve düşük stok uyarısı
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+### 🛍️ Sipariş Yönetimi
+- Sipariş oluşturma ve takip
+- Otomatik stok güncelleme (sipariş & iptal)
+- Sipariş durumu güncelleme (Bekliyor → İşleniyor → Kargoda → Teslim Edildi)
+- Admin panelinde kullanıcı bazlı sipariş oluşturma
+- Kullanıcılar sadece kendi siparişlerini görüntüler
 
-## Customize configuration
+### 📊 Dashboard
+- Toplam ürün, kategori, sipariş istatistikleri
+- Stok durumu özeti
+- Bekleyen sipariş sayısı
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## 🛠️ Kullanılan Teknolojiler
 
-## Project Setup
+### Frontend
+- Vue.js 3 (Composition API)
+- Vue Router
+- Axios
+- Vite
 
-```sh
-npm install
+### Backend
+- .NET Core 8 Web API
+- Entity Framework Core
+- SQL Server
+- JWT Authentication
+- Swagger / OpenAPI
+
+## ⚙️ Kurulum
+
+### Backend
+```bash
+cd ECommerceAPI
+dotnet restore
+dotnet ef database update
+dotnet run
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
+### Frontend
+```bash
+cd ecommerce-ui
+npm install
 npm run dev
 ```
 
-### Compile and Minify for Production
+## 🔧 Ortam Değişkenleri
 
-```sh
-npm run build
+`appsettings.json` dosyasında şu alanları düzenle:
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=...;Database=...;"
+  },
+  "JwtSettings": {
+    "SecretKey": "your-secret-key",
+    "Issuer": "your-issuer",
+    "Audience": "your-audience"
+  }
+}
 ```
-=======
-# ecommerce-vue
->>>>>>> 5a79ce64c79c61bf37f2937e40399605a926a4da
+
+## 📁 Proje Yapısı
+```
+ecommerce-ui/
+├── src/
+│   ├── components/
+│   ├── views/
+│   ├── services/
+│   ├── stores/
+│   └── router/
+```
+
+## 👤 Geliştirici
+
+**Seyit Kılıç**
+- GitHub: [@kilicseyit](https://github.com/kilicseyit)
+- LinkedIn: [linkedin.com/in/seyiitklc](https://www.linkedin.com/in/seyiitklc/)
