@@ -12,6 +12,7 @@ export const orderService = {
   create(order) {
     return api.post('/Orders', order)
   },
+  getMySales: () => api.get('/orders/my-sales'),
 
   updateStatus(id, status) {
     return api.put(`/Orders/${id}/status`, { status })
@@ -19,5 +20,7 @@ export const orderService = {
 
   delete(id) {
     return api.delete(`/Orders/${id}`)
-  }
+  },
+  getMyOrders: () => api.get('/orders/my'),
+  
 }

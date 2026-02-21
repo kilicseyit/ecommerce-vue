@@ -19,5 +19,14 @@ export const productService = {
 
   delete(id) {
     return api.delete(`/Products/${id}`)
-  }
+  },
+  getMyProducts() {
+    return api.get('/Products/my')
+  },
+  uploadImage(id, formData) {
+    return api.post(`/Products/${id}/upload-image`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' }
+    })
+  },
+  getMyProducts: () => api.get('/Products/my'),
 }

@@ -65,7 +65,7 @@
       <div class="card">
         <div class="card-header">
           <h2>Son Eklenen Ürünler</h2>
-          <button class="btn-link" @click="router.push('/products')">Tümünü Gör →</button>
+          <button class="btn-link" @click="router.push('/marketplace')">Tümünü Gör →</button>
         </div>
         <div class="product-list">
           <p v-if="loading" class="loading">Yükleniyor...</p>
@@ -111,14 +111,15 @@ import { useRouter } from 'vue-router'
 import { productService } from '../services/productService'
 import { categoryService } from '../services/categoryService'
 import { orderService } from '../services/orderService'
+import { authService } from '../services/authService'
 
+const isAdmin = computed(() => authService.isAdmin())
 const router = useRouter()
 const username = computed(() => localStorage.getItem('username') || 'Kullanıcı')
 const products = ref([])
 const categories = ref([])
 const loading = ref(true)
 const orders = ref([])
-
 const stats = computed(() => ({
   products: products.value.length,
   categories: categories.value.length,
@@ -138,9 +139,9 @@ const recentProducts = computed(() => {
 async function fetchData() {
   try {
     const [productsRes, categoriesRes, ordersRes] = await Promise.all([
-      productService.getAll(),
+      isAdmin.value ? productService.getAll() : productService.getMyProducts(),
       categoryService.getAll(),
-      orderService.getAll()
+      isAdmin.value ? orderService.getAll() : orderService.getMyOrders()
     ])
     products.value = productsRes.data
     categories.value = categoriesRes.data
@@ -149,7 +150,6 @@ async function fetchData() {
     loading.value = false
   }
 }
-
 onMounted(fetchData)
 </script>
 

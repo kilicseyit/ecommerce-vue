@@ -45,7 +45,40 @@ const router = createRouter({
   path: '/orders/add',
   component: () => import('../views/AddOrderView.vue'),
   meta: { requiresAuth: true }
-}
+},
+{
+  path: '/users',
+  component: () => import('../views/UsersView.vue'),
+  meta: { requiresAuth: true, requiresAdmin: true }
+},
+{
+  path: '/products/:id',
+  component: () => import('../views/ProductDetailView.vue'),
+  meta: { requiresAuth: true }
+},{
+  path: '/marketplace',
+  component: () => import('../views/MarketplaceView.vue'),
+  meta: { requiresAuth: true }
+},
+{
+  path: '/my-products',
+  component: () => import('../views/MyProductsView.vue'),
+  meta: { requiresAuth: true }
+},
+{
+  path: '/pending-reviews',
+  component: () => import('../views/PendingReviewsView.vue'),
+  meta: { requiresAuth: true, requiresAdmin: true }
+},
+{ path: '/cart', component: () => import('../views/CartView.vue'), meta: { requiresAuth: true } },
+{ path: '/my-orders', component: () => import('../views/MyOrdersView.vue'), meta: { requiresAuth: true } },
+{
+  path: '/statistics',
+  component: () => import('../views/StatisticsView.vue'),
+  meta: { requiresAuth: true }
+},
+{ path: '/favorites', component: () => import('../views/FavoritesView.vue'), meta: { requiresAuth: true } },
+{ path: '/messages', component: () => import('../views/MessagesView.vue'), meta: { requiresAuth: true } },
 
 
   ]

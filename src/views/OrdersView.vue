@@ -5,7 +5,7 @@
         <h1>Siparişler</h1>
         <p class="subtitle">Toplam {{ orders.length }} sipariş</p>
       </div>
-      <button class="btn-primary" @click="router.push('/orders/add')">+ Yeni Sipariş</button>
+      <button v-if="isAdmin" class="btn-primary" @click="router.push('/orders/add')">+ Yeni Sipariş</button>
     </div>
 
     <div class="card">
@@ -127,7 +127,9 @@ const deleteOrderId = ref(null)
 
 async function fetchOrders() {
   try {
-    const response = await orderService.getAll()
+    const response = isAdmin.value 
+      ? await orderService.getAll()
+      : await orderService.getMyOrders()
     orders.value = response.data
   } catch {
     show('Siparişler yüklenemedi!', 'error')

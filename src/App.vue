@@ -49,6 +49,12 @@ body { font-family: 'Inter', Arial, sans-serif; }
 
 body { background: var(--bg); color: var(--text-primary); transition: background 0.2s, color 0.2s; }
 .app-layout { display: flex; min-height: 100vh; }
-.main-content { flex: 1; margin-left: 240px; padding: 32px; }
+.main-content { 
+  flex: 1; 
+  margin-left: 240px; 
+  padding: 32px; 
+  height: 100vh;
+  overflow-y: auto;
+}
 .app-layout:not(.with-sidebar) .main-content { margin-left: 0; padding: 0; }
 </style>

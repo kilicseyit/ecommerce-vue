@@ -17,3 +17,4 @@ api.interceptors.request.use(config => {
 })
 
 export default api
+export const baseURL = 'https://localhost:7278'
